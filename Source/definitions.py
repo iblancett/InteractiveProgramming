@@ -1,4 +1,4 @@
-class course(object):
+class Course(object):
     """Course option
     Contains: description for graphics, max level, order, and current level"""
     def __init__(self, info, maxLvl):
@@ -9,7 +9,7 @@ class course(object):
     def __repr__(self):
         return '({}, {}, {})'.format(self.info, self.lvl, self.order)
 
-class reqs(object):
+class Reqs(object):
     """Requirements for course to level
     Contains: all dependencies"""
     def __init__(self, name):

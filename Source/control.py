@@ -1,3 +1,4 @@
+
 from definitions import *
 
 mech_reqs = [[3, 'Beekeeping', 1],
@@ -23,6 +24,7 @@ elec = Course('Electricity & Magnetism', '', 3, 0)
 mats = Course('Material Science', '', 3, 0)
 robo = Course('Fundamentals of Robotics', '', 2, robo_reqs)
 
+picked = []
 
 def give_order(selection, order):
     if selection == mech.name:
@@ -37,6 +39,14 @@ def give_order(selection, order):
         mats.addorder(order)
     if selection == robo.name:
         robo.addorder(order)
+
+    picked.append(selection)
+
+
+def check_dependencies():
+
+def run_all
+
 
 if __name__ == "__main__":
     make_courses()

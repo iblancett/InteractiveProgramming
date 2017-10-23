@@ -1,4 +1,4 @@
-label,course,description,levels,dependencies
+label,course,description,max,dependencies
 mech,Mechanical Prototyping,N/A,5,3bees1 4focs3 4elec2 5mats1
 bees,Sustainable Beekeeping,N/A,4,2focs1 3mats2
 focs,Fundamentals of Computer Science,N/A,4,3elec1

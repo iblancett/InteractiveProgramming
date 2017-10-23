@@ -15,6 +15,8 @@ class Gameplay(object):
     def add_order(self, selection):
         """ adds the order to a course's class instance if picked
 
+        returns: None
+
         Examples:
         >>> test_game = Gameplay(courses.populate(), 0)
         >>> test_game.add_order('mech')
@@ -29,35 +31,76 @@ class Gameplay(object):
                 self.order.append(label)
 
     def level_up(self):
-        """ level up any courses that meet all requirements
+        """ level up any courses that meet all requirements starting with the
+        user's previous choice
+
+        returns: None
+
         Examples:
         >>> test_game = Gameplay(courses.populate(), 0)
         >>> test_game.add_order('mech')
+        >>> test_game.add_order('elec')
         >>> test_game.level_up()
         >>> print(test_game.courses['mech'].lvl)
         2
         """
 
-        for label in self.order:
-            if self.courses[label].lvl and self.check_reqs(label):
+        if len(self.order) < 2:
+            return
+
+        for label in reversed(self.order[:-1]):
+            if 0 < self.courses[label].lvl < self.courses[label].max and self.check_reqs(label):
                 self.courses[label].lvl = self.courses[label].lvl + 1
+        return
 
     def check_reqs(self, label):
+        """ given a course label, checks whether all dependencies are met
+
+        returns: boolean
+
+        Examples:
+        >>> test_game = Gameplay(courses.populate(), 0)
+        >>> test_game.courses['mech'].lvl = 4
+        >>> test_game.courses['focs'].lvl = 3
+        >>> test_game.courses['elec'].lvl = 2
+        >>> test_game.check_reqs('mech')
+        True
+        >>> test_game = Gameplay(courses.populate(), 0)
+        >>> test_game.courses['mech'].lvl = 4
+        >>> test_game.courses['focs'].lvl = 3
+        >>> test_game.check_reqs('mech')
+        False
+        """
         reqs_met = []
         lvl = self.courses[label].lvl
         for req in self.courses[label].reqs:
             deplvl = int(req[0])
             if deplvl == lvl:
                 neededcourse = req[1:5]
+                print(neededcourse)
                 neededlevel = int(req[-1])
+                print(neededlevel)
                 reqs_met.append(neededlevel == self.courses[neededcourse].lvl)
+        print(reqs_met)
+        return any(reqs_met) or not len(reqs_met)
 
-        return any(reqs_met) or not reqs_met
+    def evaluate_portfolio(self):
+        """ decides whether the user has picked the right order
 
+        returns: None
 
+        Examples:
+        >>> test_game = Gameplay(courses.populate(), 0)
+        >>> test_game.evaluate_portfolio()
+        "Your portfolio could use a little more work. Try again?"
+        """
+        maxedlvls = [self.courses[label].lvl == self.courses[label].max for label in list(self.courses)]
 
-    def victory(self):
-        print("Congratulations! You are a winner!")
+        if all(maxedlvls):
+            print("Congratulations! You created the coolest portfolio!")
+        else:
+            print("Your portfolio could use a little more work. Try again?")
+
         exit(1)
 
-doctest.run_docstring_examples(Gameplay.level_up, globals())
+doctest.run_docstring_examples(Gameplay.evaluate_portfolio, globals(), verbose=True)

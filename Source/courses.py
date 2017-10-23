@@ -16,11 +16,13 @@ class Courses(object):
         self.description = config['description']
         #full detailed descriptive text
 
-        self.levels = config['levels']
+        self.levelcount = config['levels']
         #number of levels in course
 
-        self.dependencies = config['dependencies']
+        self.reqs = config['dependencies']
         #string matching label of starting room
+        self.lvl = 0
+        self.order = 0
 
 
 # Sets up item objects by creating a config dictionary for each one
@@ -42,16 +44,16 @@ class Courses(object):
 
 
 def create_course(config):
-    course = Course()
-    new_item.setup(config)
-    return(new_item)
+    new_course = Courses()
+    new_course.setup(config)
+    return(new_course)
 
 def populate():
     #runs each of the item creation functions
     #and returns a dictionary of all the items
-    all_items = {}
+    all_courses = {}
 
-    f = open('data/courses.csv', 'rb')
+    f = open('Source\courses.csv', 'r')
     reader = csv.DictReader(f)
 
     for row in reader:

@@ -4,17 +4,17 @@ def setUpE(screen):
     '''This code is to load the basic backscreen for the program.
     setUpE is NOT to be run whenever the user clicks something, just at beginning.'''
     #loading/scaling images (loads as S___ for start, scaled as F___ for final)
-    Sbee_Icon = pygame.image.load('C:/Users/sokuno/InteractiveProgramming/Ideation/Course_Icons/BeeKeeping.png')
+    Sbee_Icon = pygame.image.load('Source\\Course_Icons\\bees.png')
     Fbee_Icon = pygame.transform.scale(Sbee_Icon, (108, 100))
-    SENM_Icon = pygame.image.load('C:/Users/sokuno/InteractiveProgramming/Ideation/Course_Icons/ENM.png')
+    SENM_Icon = pygame.image.load('Source\\Course_Icons\\elec.png')
     FENM_Icon = pygame.transform.scale(SENM_Icon, (108, 100))
-    SFOCS_Icon = pygame.image.load('C:/Users/sokuno/InteractiveProgramming/Ideation/Course_Icons/FOCS.png')
+    SFOCS_Icon = pygame.image.load('Source\\Course_Icons\\focs.png')
     FFOCS_Icon = pygame.transform.scale(SFOCS_Icon, (108, 100))
-    SFunRobo_Icon = pygame.image.load('C:/Users/sokuno/InteractiveProgramming/Ideation/Course_Icons/Fun Robo.png')
+    SFunRobo_Icon = pygame.image.load('Source\\Course_Icons\\robo.png')
     FFunRobo_Icon = pygame.transform.scale(SFunRobo_Icon, (108, 100))
-    SMatSci_Icon = pygame.image.load('C:/Users/sokuno/InteractiveProgramming/Ideation/Course_Icons/Mat Sci.png')
+    SMatSci_Icon = pygame.image.load('Source\\Course_Icons\\mats.png')
     FMatSci_Icon = pygame.transform.scale(SMatSci_Icon, (108, 100))
-    SMechProto_Icon = pygame.image.load('C:/Users/sokuno/InteractiveProgramming/Ideation/Course_Icons/Mecho Proto.png')
+    SMechProto_Icon = pygame.image.load('Source\\Course_Icons\\mech.png')
     FMechProto_Icon = pygame.transform.scale(SMechProto_Icon, (108, 100))
     #basic background
     pygame.draw.rect(screen, (255, 255, 255), (0,10,1000,440))

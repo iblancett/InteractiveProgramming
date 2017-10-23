@@ -12,9 +12,7 @@ def setup():
     return gameplay(courses, portfolio)
 
 game = setup()
-
 ended = False
-
 while ended != True:
     selection = environment.prompt()
     ended = gameplay.add_order(selection)

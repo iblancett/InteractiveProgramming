@@ -15,7 +15,7 @@ class Gameplay(object):
     def add_order(self, selection):
         """ adds the order to a course's class instance if picked
 
-        returns: None
+        returns: boolean (have all courses been picked?)
 
         Examples:
         >>> test_game = Gameplay(courses.populate(), 0)
@@ -30,11 +30,13 @@ class Gameplay(object):
                 self.courses[label].lvl = 1
                 self.order.append(label)
 
+        return len(self.order) == len(list(self.courses))
+
     def level_up(self):
         """ level up any courses that meet all requirements starting with the
         user's previous choice
 
-        returns: None
+        returns: dictionary of courses
 
         Examples:
         >>> test_game = Gameplay(courses.populate(), 0)
@@ -45,13 +47,12 @@ class Gameplay(object):
         2
         """
 
-        if len(self.order) < 2:
-            return
+        if len(self.order) > 1:
+            for label in reversed(self.order[:-1]):
+                if 0 < self.courses[label].lvl < self.courses[label].max and self.check_reqs(label):
+                    self.courses[label].lvl = self.courses[label].lvl + 1
 
-        for label in reversed(self.order[:-1]):
-            if 0 < self.courses[label].lvl < self.courses[label].max and self.check_reqs(label):
-                self.courses[label].lvl = self.courses[label].lvl + 1
-        return
+        return self.courses
 
     def check_reqs(self, label):
         """ given a course label, checks whether all dependencies are met
@@ -97,10 +98,8 @@ class Gameplay(object):
         maxedlvls = [self.courses[label].lvl == self.courses[label].max for label in list(self.courses)]
 
         if all(maxedlvls):
-            print("Congratulations! You created the coolest portfolio!")
+            return "Congratulations! You created the coolest portfolio!"
         else:
-            print("Your portfolio could use a little more work. Try again?")
+            return "Your portfolio could use a little more work. Try again?"
 
-        exit(1)
-
-doctest.run_docstring_examples(Gameplay.evaluate_portfolio, globals(), verbose=True)
+# doctest.run_docstring_examples(Gameplay.evaluate_portfolio, globals(), verbose=True)

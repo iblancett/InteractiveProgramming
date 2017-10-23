@@ -1,20 +1,23 @@
 # import all scripts here
 import courses
+import gameplay
+import environment
 
 def setup():
 
     courses = catalog.populate()
 
-    portfolio = portfolio.Portfolio()
+    portfolio = environment.Portfolio()
 
-    gameplay = gameplay.Play(courses, portfolio)
+    return gameplay(courses, portfolio)
 
-    return gameplay
+game = setup()
 
-gameplay = setup()
+ended = False
 
-while gameplay.victory != True:
-    action = gameplay.prompt()
-    gameplay.parse(action)
+while ended != True:
+    selection = environment.prompt()
+    ended = gameplay.add_order(selection)
+    courses = gameplay.level_up()
 
-gameplay.victory()
+gameplay.evaluate_portfolio()

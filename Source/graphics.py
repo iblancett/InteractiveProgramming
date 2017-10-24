@@ -14,8 +14,8 @@ while not done:
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                         done = True
-                setUpE(screen, font)
-                mouseOver(screen, text)
+                setUpE(screen)
+                mouseOver(screen, font)
                 if event.type == pygame.mouse.get_pressed:
                     location = pygame.mouse.get_pos()
                     pass

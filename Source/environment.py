@@ -1,6 +1,6 @@
 import pygame
 
-def setUpE(screen, font):
+def setUpE(screen):
     '''This code is to load the basic backscreen for the program.
     setUpE is NOT to be run whenever the user clicks something, just at beginning.'''
     #loading/scaling images (loads as S___ for start, scaled as F___ for final)
@@ -33,29 +33,20 @@ def setUpE(screen, font):
     screen.blit(FMatSci_Icon,(683,550))
     screen.blit(FMechProto_Icon,(841,550))
     pygame.display.flip()
-    #render text
-    text = []
-    text.append(font.render("Bees?", 1, (255,255,0)))
-    text.append(font.render("Magic", 1, (255,255,0)))
-    text.append(font.render("Hacker d00d", 1, (255,255,0)))
-    text.append(font.render("beep boop", 1, (255,255,0)))
-    text.append(font.render("hm...", 1, (255,255,0)))
-    text.append(font.render("Mechie Art", 1, (255,255,0)))
-    return text
 
 def mouseClicks():
     '''This function looks for the click of a mouse and creates an event based on where the mouse is'''
     pass
 
-def mouseOver(screen, text):
+def mouseOver(screen, font):
     '''This function looks for the position of the mouse and will display text above the buttons if the mouse is hovering over the buttons'''
     #icon descriptions
-    beeDesc = text[0]
-    ENMDesc = text[1]
-    FOCSDesc = text[2]
-    FunRoboDesc = text[3]
-    MatSciDesc = text[4]
-    MechProtoDesc = text[5]
+    beeDesc = font.render("Bees?", 1, (255,255,0))
+    ENMDesc = font.render("Magic", 1, (255,255,0))
+    FOCSDesc = font.render("Hacker d00d", 1, (255,255,0))
+    FunRoboDesc = font.render("beep boop", 1, (255,255,0))
+    MatSciDesc = font.render("hm...", 1, (255,255,0))
+    MechProtoDesc = font.render("Mechie Art", 1, (255,255,0))
     #if statements
     (x,y) = pygame.mouse.get_pos()
     if y >= 550 and y<= 655:

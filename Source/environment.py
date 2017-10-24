@@ -52,13 +52,19 @@ def mouseOver(screen, font):
     if y >= 550 and y<= 655:
         if x >= 51 and x<= 159:
             screen.blit(beeDesc, (100, 490))
-        if x >= 209 and x <= 317:
+        elif x >= 209 and x <= 317:
             screen.blit(ENMDesc, (100, 490))
-        if x >= 367 and x <= 475:
+        elif x >= 367 and x <= 475:
             screen.blit(FOCSDesc, (100, 490))
-        if x >= 525 and x <= 633:
+        elif x >= 525 and x <= 633:
             screen.blit(FunRoboDesc, (100, 490))
-        if x >= 683 and x <= 791:
+        elif x >= 683 and x <= 791:
             screen.blit(MatSciDesc, (100, 490))
-        if x >= 841 and x <= 950:
+        elif x >= 841 and x <= 950:
             screen.blit(MechProtoDesc, (100, 490))
+        else:
+            pygame.draw.rect(screen, (255, 255, 255), (0,480,1000,50))
+            pygame.display.flip()
+    else:
+        pygame.draw.rect(screen, (255, 255, 255), (0,480,1000,50))
+        pygame.display.flip()

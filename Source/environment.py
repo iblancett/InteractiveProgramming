@@ -1,6 +1,6 @@
 import pygame
 
-def setUpE(screen):
+def setUpE(screen, font):
     '''This code is to load the basic backscreen for the program.
     setUpE is NOT to be run whenever the user clicks something, just at beginning.'''
     #loading/scaling images (loads as S___ for start, scaled as F___ for final)
@@ -47,7 +47,7 @@ def mouseClicks():
     '''This function looks for the click of a mouse and creates an event based on where the mouse is'''
     pass
 
-def mouseOver(screen, font, text):
+def mouseOver(screen, text):
     '''This function looks for the position of the mouse and will display text above the buttons if the mouse is hovering over the buttons'''
     #icon descriptions
     beeDesc = text[0]

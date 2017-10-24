@@ -41,12 +41,12 @@ def mouseClicks():
 def mouseOver(screen, font):
     '''This function looks for the position of the mouse and will display text above the buttons if the mouse is hovering over the buttons'''
     #icon descriptions
-    beeDesc = font.render("Bees?", 1, (255,255,0))
-    ENMDesc = font.render("Magic", 1, (255,255,0))
-    FOCSDesc = font.render("Hacker d00d", 1, (255,255,0))
-    FunRoboDesc = font.render("beep boop", 1, (255,255,0))
-    MatSciDesc = font.render("hm...", 1, (255,255,0))
-    MechProtoDesc = font.render("Mechie Art", 1, (255,255,0))
+    beeDesc = font.render("Bees?", 1, (255,255,255))
+    ENMDesc = font.render("Magic", 1, (255,255,255))
+    FOCSDesc = font.render("Hacker d00d", 1, (255,255,255))
+    FunRoboDesc = font.render("beep boop", 1, (255,255,255))
+    MatSciDesc = font.render("hm...", 1, (255,255,255))
+    MechProtoDesc = font.render("Mechie Art", 1, (255,255,255))
     #if statements
     (x,y) = pygame.mouse.get_pos()
     if y >= 550 and y<= 655:
@@ -63,8 +63,6 @@ def mouseOver(screen, font):
         elif x >= 841 and x <= 950:
             screen.blit(MechProtoDesc, (100, 490))
         else:
-            pygame.draw.rect(screen, (255, 255, 255), (0,480,1000,50))
-            pygame.display.flip()
+            pygame.draw.rect(screen, (0,0,0), (0,480,1000,50))
     else:
-        pygame.draw.rect(screen, (255, 255, 255), (0,480,1000,50))
-        pygame.display.flip()
+        pygame.draw.rect(screen, (0,0,0), (0,480,1000,50))

@@ -5,7 +5,7 @@ from environment import *
 pygame.init()
 screen = pygame.display.set_mode((1000, 700))
 pygame.font.init()
-font = pygame.font.Font(None,20)
+font = pygame.font.Font(None,30)
 pygame.mouse.set_pos([500,350])
 pygame.mouse.set_visible(True)
 done = False
@@ -20,6 +20,4 @@ while not done:
                     location = pygame.mouse.get_pos()
                     pass
                     #if location >=
-
-
         pygame.display.flip()

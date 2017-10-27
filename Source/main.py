@@ -4,20 +4,9 @@ import gameplay
 import environment
 import graphics
 import portfolio
+import sys
 
-def setup():
-
-    courses = catalog.populate()
-    environment = graphics()
-    portfolio = portfolio.Portfolio(courses)
-
-    return gameplay(courses)
-
-game = setup()
-ended = False
-while ended != True:
-    selection = environment.prompt()
-    ended = gameplay.add_order(selection)
-    courses = gameplay.level_up()
-
+courses = catalog.populate()
+graphics.initialize()
+portfolio.Portfolio(courses)
 gameplay.evaluate_portfolio()

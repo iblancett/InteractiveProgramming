@@ -1,4 +1,6 @@
 import pygame
+import os
+import sys
 
 def setUpE(screen, font):
     '''This code is to load the basic backscreen for the program.

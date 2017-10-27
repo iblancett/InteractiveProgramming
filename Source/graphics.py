@@ -3,8 +3,8 @@ import os
 from environment import *
 
 def initialize():
-""" Initializes graphic screen.
-"""
+    """ Initializes graphic screen.
+    """
     pygame.init()
     screen = pygame.display.set_mode((1000, 700))
     pygame.font.init()

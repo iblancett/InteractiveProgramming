@@ -2,14 +2,16 @@
 import courses
 import gameplay
 import environment
+import graphics
+import portfolio
 
 def setup():
 
     courses = catalog.populate()
+    environment = graphics()
+    portfolio = portfolio.Portfolio(courses)
 
-    portfolio = environment.Portfolio()
-
-    return gameplay(courses, portfolio)
+    return gameplay(courses)
 
 game = setup()
 ended = False

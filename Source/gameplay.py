@@ -5,11 +5,10 @@ import doctest
 class Gameplay(object):
 #Parses player commands and manipulates a map object
 
-    def __init__ (self, courses, portfolio):
+    def __init__ (self, courses):
         self.courses = courses
         self.labels = list(courses)
         self.order = []
-        self.portfolio = portfolio
         self.round = 0
 
     def add_order(self, selection):

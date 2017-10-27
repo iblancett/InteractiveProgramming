@@ -16,8 +16,5 @@ while not done:
                 if event.type == pygame.QUIT:
                         done = True
                 mouseOver(screen, text)
-                if event.type == pygame.mouse.get_pressed:
-                    location = pygame.mouse.get_pos()
-                    pass
-                    #if location >=
+                mouseClicks(screen, )
         pygame.display.flip()

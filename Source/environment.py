@@ -34,8 +34,6 @@ def setUpE(screen, font):
     screen.blit(FFunRobo_Icon,(525,550))
     screen.blit(FMatSci_Icon,(683,550))
     screen.blit(FMechProto_Icon,(841,550))
-    #create event types
-    BUTTON = USEREVENT+1
     #render text
     text = []
     text.append(font.render("Bees?", 1, (255,255,255)))
@@ -45,8 +43,8 @@ def setUpE(screen, font):
     text.append(font.render("hm...", 1, (255,255,255)))
     text.append(font.render("Mechie Art", 1, (255,255,255)))
     #Reload display / return font
-    return text
     pygame.display.flip()
+    return text
 
 def mouseClicks(order, BUTTON):
     '''This function looks for the click of a mouse and queues an event based on where the mouse is'''
@@ -71,9 +69,10 @@ def mouseClicks(order, BUTTON):
             button6 = pygame.event.Event(BUTTON, pressed='mech')
             pygame.event.post(button6)
 
-def mouseOver(screen, text):
+def mouseOver(text, screen):
     '''This function looks for the position of the mouse and will display text above the buttons if the mouse is hovering over the buttons'''
     #icon descriptions
+
     beeDesc = text[0]
     ENMDesc = text[1]
     FOCSDesc = text[2]

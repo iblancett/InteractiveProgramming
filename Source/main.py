@@ -1,16 +1,17 @@
 # import all scripts here
 import courses
-import gameplay
+from gameplay import Gameplay
 import environment
 import graphics
-import portfolio
 import sys
 import pygame
 from environment import *
 
-BUTTON = USEREVENT + 1
-courses = catalog.populate()
-text = graphics.initialize()
+BUTTON = pygame.USEREVENT + 1
+courses = courses.populate()
+text_screen = graphics.initialize()
+text = text_screen[0]
+screen = text_screen[1]
 control = Gameplay(courses)
 
 done = False
@@ -18,12 +19,12 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit(1)
-        if event.type == pygame.BUTTON:
+        if event.type == BUTTON:
             done = control.add_order()
             control.level_up()
             for course in list(gameplay.courses):
-                print course, gameplay.courses[course].lvl
-        mouseOver(screen, text)
+                print(course, gameplay.courses[course].lvl)
+        mouseOver(text, screen)
         mouseClicks(control.order, BUTTON)
     pygame.display.flip()
-return done
+    pygame.event.pump()

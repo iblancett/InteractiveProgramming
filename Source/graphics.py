@@ -12,4 +12,4 @@ def initialize():
     pygame.mouse.set_pos([500,350])
     pygame.mouse.set_visible(True)
     text = setUpE(screen, font)
-    return text
+    return [screen, text]

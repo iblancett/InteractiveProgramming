@@ -35,18 +35,7 @@ def setUpE(screen, font):
     screen.blit(FMatSci_Icon,(683,550))
     screen.blit(FMechProto_Icon,(841,550))
     #create event types
-    BEES = USEREVENT+1
-    ELEC = USEREVENT+2
-    FOCS = USEREVENT+3
-    ROBO = USEREVENT+4
-    MATS = USEREVENT+5
-    MECH = USEREVENT+6
-    button1 = pygame.event.Event(BEES, pressed='bees')
-    button2 = pygame.event.Event(ELEC, pressed='elec')
-    button3 = pygame.event.Event(FOCS, pressed='focs')
-    button4 = pygame.event.Event(ROBO, pressed='robo')
-    button5 = pygame.event.Event(MATS, pressed='mats')
-    button6 = pygame.event.Event(MECH, pressed='mech')
+    BUTTON = USEREVENT+1
     #render text
     text = []
     text.append(font.render("Bees?", 1, (255,255,255)))
@@ -59,21 +48,27 @@ def setUpE(screen, font):
     return text
     pygame.display.flip()
 
-def mouseClicks():
+def mouseClicks(order, BUTTON):
     '''This function looks for the click of a mouse and queues an event based on where the mouse is'''
     (x,y) = pygame.mouse.get_pos()
     if y >= 550 and y<= 655:
-        if x >= 51 and x<= 159:
+        if x >= 51 and x<= 159 and 'bees' not in order:
+            button1 = pygame.event.Event(BUTTON, pressed='bees')
             pygame.event.post(button1)
-        elif x >= 209 and x <= 317:
+        elif x >= 209 and x <= 317 and 'elec' not in order:
+            button2 = pygame.event.Event(BUTTON, pressed='elec')
             pygame.event.post(button2)
-        elif x >= 367 and x <= 475:
+        elif x >= 367 and x <= 475 and 'focs' not in order:
+            button3 = pygame.event.Event(BUTTON, pressed='focs')
             pygame.event.post(button3)
-        elif x >= 525 and x <= 633:
+        elif x >= 525 and x <= 633 and 'robo' not in order:
+            button4 = pygame.event.Event(BUTTON, pressed='robo')
             pygame.event.post(button4)
-        elif x >= 683 and x <= 791:
+        elif x >= 683 and x <= 791 and 'mats' not in order:
+            button5 = pygame.event.Event(BUTTON, pressed='mats')
             pygame.event.post(button5)
-        elif x >= 841 and x <= 950:
+        elif x >= 841 and x <= 950 and 'mech' not in order:
+            button6 = pygame.event.Event(BUTTON, pressed='mech')
             pygame.event.post(button6)
 
 def mouseOver(screen, text):

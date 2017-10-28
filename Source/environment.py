@@ -34,6 +34,19 @@ def setUpE(screen, font):
     screen.blit(FFunRobo_Icon,(525,550))
     screen.blit(FMatSci_Icon,(683,550))
     screen.blit(FMechProto_Icon,(841,550))
+    #create event types
+    BEES = USEREVENT+1
+    ELEC = USEREVENT+2
+    FOCS = USEREVENT+3
+    ROBO = USEREVENT+4
+    MATS = USEREVENT+5
+    MECH = USEREVENT+6
+    button1 = pygame.event.Event(BEES, pressed='bees')
+    button2 = pygame.event.Event(ELEC, pressed='elec')
+    button3 = pygame.event.Event(FOCS, pressed='focs')
+    button4 = pygame.event.Event(ROBO, pressed='robo')
+    button5 = pygame.event.Event(MATS, pressed='mats')
+    button6 = pygame.event.Event(MECH, pressed='mech')
     #render text
     text = []
     text.append(font.render("Bees?", 1, (255,255,255)))
@@ -47,8 +60,21 @@ def setUpE(screen, font):
     pygame.display.flip()
 
 def mouseClicks():
-    '''This function looks for the click of a mouse and creates an event based on where the mouse is'''
-    pass
+    '''This function looks for the click of a mouse and queues an event based on where the mouse is'''
+    (x,y) = pygame.mouse.get_pos()
+    if y >= 550 and y<= 655:
+        if x >= 51 and x<= 159:
+            pygame.event.post(button1)
+        elif x >= 209 and x <= 317:
+            pygame.event.post(button2)
+        elif x >= 367 and x <= 475:
+            pygame.event.post(button3)
+        elif x >= 525 and x <= 633:
+            pygame.event.post(button4)
+        elif x >= 683 and x <= 791:
+            pygame.event.post(button5)
+        elif x >= 841 and x <= 950:
+            pygame.event.post(button6)
 
 def mouseOver(screen, text):
     '''This function looks for the position of the mouse and will display text above the buttons if the mouse is hovering over the buttons'''

@@ -75,12 +75,9 @@ class Gameplay(object):
             deplvl = int(req[0])
             if deplvl == lvl:
                 neededcourse = req[1:5]
-                print(neededcourse)
                 neededlevel = int(req[-1])
-                print(neededlevel)
                 reqs_met.append(neededlevel == self.courses[neededcourse].lvl)
-        print(reqs_met)
-        return any(reqs_met) or not len(reqs_met)
+        return all(reqs_met) or not len(reqs_met)
 
     def evaluate_portfolio(self):
         """ decides whether the user has picked the right order

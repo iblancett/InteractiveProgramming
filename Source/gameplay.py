@@ -51,8 +51,6 @@ class Gameplay(object):
                 if 0 < self.courses[label].lvl < self.courses[label].max and self.check_reqs(label):
                     self.courses[label].lvl = self.courses[label].lvl + 1
 
-        return self.courses
-
     def check_reqs(self, label):
         """ given a course label, checks whether all dependencies are met
 

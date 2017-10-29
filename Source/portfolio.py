@@ -1,7 +1,8 @@
 class Portfolio(object):
 
-    def __init__(self, courses):
+    def __init__(self, courses, screen):
         self.labels = list(courses)
+        self.screen = screen
 
     def get_imgs(self, courses):
         imgs = []

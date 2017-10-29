@@ -49,7 +49,7 @@ def setUpE(screen, font):
 def mouseClicks(order, BUTTON):
     '''This function looks for the click of a mouse and queues an event based on where the mouse is'''
     (x,y) = pygame.mouse.get_pos()
-    if y >= 550 and y<= 655:
+    if y >= 550 and y<= 655 and any(pygame.mouse.get_pressed()):
         if x >= 51 and x<= 159 and 'bees' not in order:
             button1 = pygame.event.Event(BUTTON, pressed='bees')
             pygame.event.post(button1)
@@ -72,7 +72,6 @@ def mouseClicks(order, BUTTON):
 def mouseOver(text, screen):
     '''This function looks for the position of the mouse and will display text above the buttons if the mouse is hovering over the buttons'''
     #icon descriptions
-
     beeDesc = text[0]
     ENMDesc = text[1]
     FOCSDesc = text[2]

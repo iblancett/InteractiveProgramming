@@ -1,6 +1,7 @@
 from sys import exit
 import courses
 import doctest
+import pygame
 
 class Gameplay(object):
 #Parses player commands and manipulates a map object
@@ -24,7 +25,7 @@ class Gameplay(object):
         """
         self.round = self.round + 1
         for label in self.labels:
-            if label == selection:
+            if label == selection.pressed:
                 self.courses[label].order = self.round
                 self.courses[label].lvl = 1
                 self.order.append(label)
@@ -47,8 +48,8 @@ class Gameplay(object):
         """
 
         if len(self.order) > 1:
-            for label in reversed(self.order[:-1]):
-                if 0 < self.courses[label].lvl < self.courses[label].max and self.check_reqs(label):
+            for label in reversed(self.order):
+                if 0 < int(self.courses[label].lvl) < int(self.courses[label].max) and self.check_reqs(label):
                     self.courses[label].lvl = self.courses[label].lvl + 1
 
     def check_reqs(self, label):

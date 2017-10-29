@@ -62,7 +62,6 @@ def populate():
             row['dependencies'] = []
         new_course = (create_course(row))
         all_courses[new_course.label] = new_course
-    print(all_courses)
     return all_courses
 
 populate()

@@ -20,23 +20,28 @@ def ending(victory, levels, screen):
     font20 = pygame.font.Font(None, 20)
     if victory == 0 or victory == 2:
         screenScroll(screen, (0,0,0))
-        screen.blit(font50.render("Looks like your profolio", 1, (255,255,255)), (150, 250))
-        screen.blit(font50.render("could use some improvement", 1, (255,255,255)), (170, 350))
-        for i in range(len(levels)):
-            screen.blit(font20.render(levels[i], 1, (255,255,255)), (100+(i*20), 500))
-        pygame.display.flip()
-    if victory == 1:
-        screenScroll(screen, (255,255,255))
-        while True:
+        screen.blit(font50.render("Looks like your profolio", 1, (255,255,255)), (300, 250))
+        screen.blit(font50.render("could use some improvement", 1, (255,255,255)), (280, 350))
+        Done = False
+        while not Done:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    sys.exit(1)
-            screen.blit(font50.render("Good job!", 1, (0,0,0)), (400, 250))
-            screen.blit(font50.render("You're the ultimate Oliner!'", 1, (0,0,0)), (150, 250))
+                    Done = True
+            for i in range(len(levels)):
+                screen.blit(font20.render(levels[i], 1, (200,200,200)), (100, 450+i*25))
+            pygame.display.flip()
+    if victory == 1:
+        screenScroll(screen, (255,255,255))
+        Done = False
+        while not Done:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    Done = True
+            screen.blit(font50.render("Good job!", 1, (0,0,0)), (450, 250))
+            screen.blit(font50.render("You're the ultimate Oliner!'", 1, (0,0,0)), (300, 350))
             screen.blit(font20.render('All course levels maxed. :)', 1, (0,0,0)), (450, 500))
             pygame.display.flip()
             pygame.event.pump()
-
 
 #not implemented yet
 def graduation():

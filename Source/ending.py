@@ -20,7 +20,7 @@ def ending(victory, levels, screen):
     font20 = pygame.font.Font(None, 20)
     if victory == 0 or victory == 2:
         screenScroll(screen, (0,0,0))
-        screen.blit(font50.render("Looks like your profolio", 1, (255,255,255)), (300, 250))
+        screen.blit(font50.render("Looks like your portfolio", 1, (255,255,255)), (300, 250))
         screen.blit(font50.render("could use some improvement", 1, (255,255,255)), (280, 350))
         Done = False
         while not Done:

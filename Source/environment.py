@@ -1,3 +1,8 @@
+# Author: Siena Okuno
+# Project: Interactive Programming
+# Date: 10.30.2017
+# Description: Creates GUI for player and posts events when a button is clicked
+
 import pygame
 import os
 import sys

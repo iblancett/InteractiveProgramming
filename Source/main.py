@@ -1,12 +1,16 @@
-# import all scripts here
+# Author: Leo Liu, Siena Okuno, & Isa Blancett
+# Project: Interactive Programming
+# Date: 10.30.2017
+# Description: Game setup, loop through game graphics and control, & ending call
+
 import courses
 from gameplay import Gameplay
-import environment
 import sys
 import pygame
 import ending
 from environment import *
 
+# INITIALIZE GAME
 BUTTON = pygame.USEREVENT + 1
 init_courses = courses.populate()
 text_screen = environment.initialize()
@@ -14,6 +18,7 @@ screen = text_screen[0]
 text = text_screen[1]
 control = Gameplay(init_courses)
 
+# LOOP THROUGH GRAPHICS AND CONTROLS, CHECKING FOR PASSING OF EVENTS
 done = False
 while not done:
     for event in pygame.event.get():
@@ -27,7 +32,7 @@ while not done:
     pygame.display.flip()
     pygame.event.pump()
 
-
+# EVALUATE ENDING AND SEND TO VICTORY SCREEN
 victory = control.evaluate_portfolio()
 if victory == 1:
     ending.determine(victory, ["%s: %s" % (control.courses[course].name, 'MAX') for course in control.courses])

@@ -1,8 +1,7 @@
-label,course,description,max,dependencies
-mech,Mechanical Prototyping,Learn techniques for mechanical design... and how to not kill your teammates,5,3bees1 4focs3 4elec2 5mats1
-bees,Sustainable Beekeeping,Beekeeping. Good for the environment. Ben Linder. Good for the soul.
-,3,2focs1 3mats2
-focs,Fundamentals of Computer Science,Step one:FOCS. Step two:Offical Hacker d00d. Step 3:Rule the world.,3,3elec1
-elec,Electricity and Magnetism,Does anyone know how electricity and magnetism work?,2,0
-mats,Material Science,Material science. Explore materials. Self-explanatory...right?,2,0
-robo,Fundamentals of Robotics,Death by Dave, but in a project-based-learning way.,1,2mech5 2bees3 2focs3 2elec2 2mats2
+label,course,description,max,dependencies,xrange
+mech,Mechanical Prototyping,Learn techniques for mechanical design... and how to not kill your teammates,5,3bees1 4focs3 4elec2 5mats1,841
+bees,Sustainable Beekeeping,Beekeeping. Good for the environment. Ben Linder. Good for the soul.,3,2focs1 3mats2,51
+focs,Fundamentals of Computer Science,Step one:FOCS. Step two:Offical Hacker d00d. Step 3:Rule the world.,3,3elec1,367
+elec,Electricity and Magnetism,Does anyone know how electricity and magnetism work?,2,0,209
+mats,Material Science,Material science. Explore materials. Self-explanatory...right?,2,0,683
+robo,Fundamentals of Robotics,Death by Dave but in a project-based-learning way.,1,2mech5 2bees3 2focs3 2elec2 2mats2,525

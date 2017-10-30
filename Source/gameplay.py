@@ -47,7 +47,7 @@ class Gameplay(object):
         """ level up any courses that meet all requirements starting with the
         user's previous choice
 
-        returns: None
+        returns: All courses
 
         Examples:
         >>> test_game = Gameplay(courses.populate(), 0)
@@ -64,7 +64,7 @@ class Gameplay(object):
                 # Check for maxed out and for dependencies
                 if int(self.courses[label].lvl) < int(self.courses[label].max) and self.check_reqs(label):
                     self.courses[label].lvl = self.courses[label].lvl + 1
-        return
+        return self.courses
 
     def check_reqs(self, label):
         """ given a course label, checks whether all dependencies are met

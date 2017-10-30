@@ -36,6 +36,6 @@ while not done:
 # EVALUATE ENDING AND SEND TO VICTORY SCREEN
 victory = control.evaluate_portfolio()
 if victory == 1:
-    ending(victory, ["%s: %s" % (control.courses[course].name, 'MAX') for course in control.courses])
+    ending(victory, ["%s: %s" % (control.courses[course].name, 'MAX') for course in control.courses], screen)
 else:
-    ending(victory, ["%s: %s" % (control.courses[course].name, control.courses[course].lvl) for course in control.courses])
+    ending(victory, ["%s: %s" % (control.courses[course].name, control.courses[course].lvl) for course in control.courses], screen)

@@ -3,6 +3,9 @@
 # Date: 10.30.2017
 # Description: Determines endings
 
+import pygame
+import sys
+
 def screenScroll(screen, color):
     '''Turns screen a color by filling in with rectangles.'''
     for i in range(700):
@@ -11,7 +14,7 @@ def screenScroll(screen, color):
         pygame.display.flip()
 
 
-def ending(victory, levels):
+def ending(victory, levels, screen):
     '''Creates basic, text-only ending'''
     font50 = pygame.font.Font(None, 50)
     font20 = pygame.font.Font(None, 20)
@@ -22,12 +25,17 @@ def ending(victory, levels):
         for i in range(len(levels)):
             screen.blit(font20.render(levels[i], 1, (255,255,255)), (100+(i*20), 500))
         pygame.display.flip()
-    if victory == 2:
+    if victory == 1:
         screenScroll(screen, (255,255,255))
-        screen.blit(font50.render("Good job!", 1, (255,255,255)), (400, 250))
-        screen.blit(font50.render("You're the ultimate Oliner!'", 1, (255,255,255)), (150, 250))
-        screen.blit(font20.render('All course levels maxed. :)', 1, (255,255,255)), (450, 500))
-        pygame.display.flip()
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit(1)
+            screen.blit(font50.render("Good job!", 1, (0,0,0)), (400, 250))
+            screen.blit(font50.render("You're the ultimate Oliner!'", 1, (0,0,0)), (150, 250))
+            screen.blit(font20.render('All course levels maxed. :)', 1, (0,0,0)), (450, 500))
+            pygame.display.flip()
+            pygame.event.pump()
 
 
 #not implemented yet

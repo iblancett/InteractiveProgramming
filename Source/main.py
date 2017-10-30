@@ -2,14 +2,14 @@
 import courses
 from gameplay import Gameplay
 import environment
-import graphics
 import sys
 import pygame
+import ending
 from environment import *
 
 BUTTON = pygame.USEREVENT + 1
 init_courses = courses.populate()
-text_screen = graphics.initialize()
+text_screen = environment.initialize()
 screen = text_screen[0]
 text = text_screen[1]
 control = Gameplay(init_courses)
@@ -22,18 +22,14 @@ while not done:
         if event.type == BUTTON:
             done = control.add_order(event)
             control.level_up()
-            for course in list(control.courses):
-                print(course, control.courses[course].lvl)
         mouseOver(text, screen)
         mouseClicks(control.order, BUTTON, screen)
     pygame.display.flip()
     pygame.event.pump()
 
+
 victory = control.evaluate_portfolio()
-print("Final Levels:")
-if victory:
-    for course in list(control.courses):
-        print("%s: %s" % (control.courses[course].name, 'MAX'))
+if victory == 1:
+    ending.determine(victory, ["%s: %s" % (control.courses[course].name, 'MAX') for course in control.courses])
 else:
-    for course in list(control.courses):
-        print("%s: %s" % (control.courses[course].name, control.courses[course].lvl))
+    ending.determine(victory, ["%s: %s" % (control.courses[course].name, control.courses[course].lvl) for course in control.courses])

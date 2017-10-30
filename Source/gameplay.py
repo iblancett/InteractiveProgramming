@@ -90,11 +90,13 @@ class Gameplay(object):
         >>> test_game.evaluate_portfolio()
         "Your portfolio could use a little more work. Try again?"
         """
-        maxedlvls = [int(self.courses[label].lvl) == int(self.courses[label].max) for label in list(self.courses)]
-        if all(maxedlvls):
-            print("Congratulations! You created the coolest portfolio!")
-            return True
+        lvls = [int(self.courses[label].lvl) for label in list(self.courses)]
+        maxlvls = [int(self.courses[label].max) for label in list(self.courses)]
+        if lvls == maxlvls:
+            return 1
+        elif (sum(lvls)) >= (sum(maxlvls)*3/4):
+            return 2
         else:
-            return "Your portfolio could use a little more work. Try again?"
+            return 0
 
 # doctest.run_docstring_examples(Gameplay.evaluate_portfolio, globals(), verbose=True)

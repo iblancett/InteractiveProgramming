@@ -53,12 +53,12 @@ def setUpE(screen, font, descriptions):
     screen.blit(FMechProto_Icon,(841,550))
     #render text
     text = []
-    text.append(font.render("Sustainable Beekeeping: %s" % descriptions[0], 1, (255,255,255)))
-    text.append(font.render("Electricity and Magnetism: %s" % descriptions[1], 1, (255,255,255)))
+    text.append(font.render("Sustainable Beekeeping: %s" % descriptions[1], 1, (255,255,255)))
+    text.append(font.render("Electricity and Magnetism: %s" % descriptions[3], 1, (255,255,255)))
     text.append(font.render("Fundamentals of Computer Science: %s" % descriptions[2], 1, (255,255,255)))
-    text.append(font.render("Fundamentals of Robotics: %s" % descriptions[3], 1, (255,255,255)))
+    text.append(font.render("Fundamentals of Robotics: %s" % descriptions[5], 1, (255,255,255)))
     text.append(font.render("Material Science: %s" % descriptions[4], 1, (255,255,255)))
-    text.append(font.render("Mechanical Prototyping: %s" % descriptions[5], 1, (255,255,255)))
+    text.append(font.render("Mechanical Prototyping: %s" % descriptions[0], 1, (255,255,255)))
     #Reload display / return font
     pygame.display.flip()
     return text

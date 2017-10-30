@@ -53,21 +53,33 @@ def mouseClicks(order, BUTTON):
         if x >= 51 and x<= 159 and 'bees' not in order:
             button1 = pygame.event.Event(BUTTON, pressed='bees')
             pygame.event.post(button1)
+            pygame.image.load('Source/Course_Icons/bees_clicked.png')
+            pygame.display.flip()
         elif x >= 209 and x <= 317 and 'elec' not in order:
             button2 = pygame.event.Event(BUTTON, pressed='elec')
             pygame.event.post(button2)
+            pygame.image.load('Source/Course_Icons/elec_clicked.png')
+            pygame.display.flip()
         elif x >= 367 and x <= 475 and 'focs' not in order:
             button3 = pygame.event.Event(BUTTON, pressed='focs')
             pygame.event.post(button3)
+            pygame.image.load('Source/Course_Icons/focs_clicked.png')
+            pygame.display.flip()
         elif x >= 525 and x <= 633 and 'robo' not in order:
             button4 = pygame.event.Event(BUTTON, pressed='robo')
             pygame.event.post(button4)
+            pygame.image.load('Source/Course_Icons/robo_clicked.png')
+            pygame.display.flip()
         elif x >= 683 and x <= 791 and 'mats' not in order:
             button5 = pygame.event.Event(BUTTON, pressed='mats')
             pygame.event.post(button5)
+            pygame.image.load('Source/Course_Icons/mats_clicked.png')
+            pygame.display.flip()
         elif x >= 841 and x <= 950 and 'mech' not in order:
             button6 = pygame.event.Event(BUTTON, pressed='mech')
             pygame.event.post(button6)
+            pygame.image.load('Source/Course_Icons/mech_clicked.png')
+            pygame.display.flip()
 
 def mouseOver(text, screen):
     '''This function looks for the position of the mouse and will display text above the buttons if the mouse is hovering over the buttons'''

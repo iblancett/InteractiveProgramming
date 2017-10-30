@@ -7,19 +7,19 @@ import pygame
 import os
 import sys
 
-def initialize():
+def initialize(descriptions):
     """ Initializes graphic screen.
     """
     pygame.init()
     screen = pygame.display.set_mode((1000, 700))
     pygame.font.init()
-    font = pygame.font.Font(None,30)
+    font = pygame.font.Font(None,26)
     pygame.mouse.set_pos([500,350])
     pygame.mouse.set_visible(True)
-    text = setUpE(screen, font)
+    text = setUpE(screen, font, descriptions)
     return [screen, text]
 
-def setUpE(screen, font):
+def setUpE(screen, font, descriptions):
     '''This code is to load the basic backscreen for the program.
     setUpE is NOT to be run whenever the user clicks something, just at beginning.'''
     #loading/scaling images (loads as S___ for start, scaled as F___ for final)
@@ -53,12 +53,12 @@ def setUpE(screen, font):
     screen.blit(FMechProto_Icon,(841,550))
     #render text
     text = []
-    text.append(font.render("Bees?", 1, (255,255,255)))
-    text.append(font.render("Magic", 1, (255,255,255)))
-    text.append(font.render("Hacker d00d", 1, (255,255,255)))
-    text.append(font.render("beep boop", 1, (255,255,255)))
-    text.append(font.render("hm...", 1, (255,255,255)))
-    text.append(font.render("Mechie Art", 1, (255,255,255)))
+    text.append(font.render("Sustainable Beekeeping: %s" % descriptions[0], 1, (255,255,255)))
+    text.append(font.render("Electricity and Magnetism: %s" % descriptions[1], 1, (255,255,255)))
+    text.append(font.render("Fundamentals of Computer Science: %s" % descriptions[2], 1, (255,255,255)))
+    text.append(font.render("Fundamentals of Robotics: %s" % descriptions[3], 1, (255,255,255)))
+    text.append(font.render("Material Science: %s" % descriptions[4], 1, (255,255,255)))
+    text.append(font.render("Mechanical Prototyping: %s" % descriptions[5], 1, (255,255,255)))
     #Reload display / return font
     pygame.display.flip()
     return text
@@ -126,3 +126,12 @@ def updateImg(screen, img, location):
     loaded = pygame.transform.scale(pygame.image.load(img), (108, 100))
     screen.blit(loaded, location)
     pygame.display.flip()
+
+def update_portfolio(courses, screen):
+    labels = list(courses)
+    pygame.draw.rect(screen, (255,255,255), (0,10,1000,440))
+    for label in labels:
+        if courses[label].lvl:
+            img = 'Source/Level_Icons/%s%s.png' % (label, courses[label].lvl)
+            xmin = int(courses[label].range)
+            updateImg(screen, img, (xmin, 150))

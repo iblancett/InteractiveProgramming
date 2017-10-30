@@ -29,6 +29,7 @@ class Courses(object):
         self.description = config['description']
         self.max = config['max']
         self.reqs = config['dependencies']
+        self.range = config['xrange']
         self.lvl = 0
         self.order = 0
 
@@ -54,6 +55,7 @@ def populate():
         'description':'DESCRIPTION',
         'max': NUMBER OF LEVELS,
         'dependencies': 'LVL' + 'NEEDEDCOURSE' + 'NEEDEDLEVEL',
+        'xrange': 'MIN MAX'
     }
 
     returns: dictionary of all course instances
@@ -71,5 +73,3 @@ def populate():
         new_course = (create_course(row))
         all_courses[new_course.label] = new_course
     return all_courses
-
-populate()

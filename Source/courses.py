@@ -17,7 +17,7 @@ class Courses(object):
 
         self.config = config
         self.label = config['label']
-        self.course = config['course']
+        self.name = config['course']
         self.description = config['description']
         self.max = config['max']
         self.reqs = config['dependencies']

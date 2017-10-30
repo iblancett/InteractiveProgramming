@@ -8,11 +8,11 @@ import pygame
 from environment import *
 
 BUTTON = pygame.USEREVENT + 1
-courses = courses.populate()
+init_courses = courses.populate()
 text_screen = graphics.initialize()
 screen = text_screen[0]
 text = text_screen[1]
-control = Gameplay(courses)
+control = Gameplay(init_courses)
 
 done = False
 while not done:
@@ -29,4 +29,11 @@ while not done:
     pygame.display.flip()
     pygame.event.pump()
 
-print(control.evaluate_portfolio())
+victory = control.evaluate_portfolio()
+print("Final Levels:")
+if victory:
+    for course in list(control.courses):
+        print("%s: %s" % (control.courses[course].name, 'MAX'))
+else:
+    for course in list(control.courses):
+        print("%s: %s" % (control.courses[course].name, control.courses[course].lvl))

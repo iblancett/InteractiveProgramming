@@ -48,7 +48,7 @@ class Gameplay(object):
         """
 
         if len(self.order) > 1:
-            for label in reversed(self.order):
+            for label in reversed(self.order[:-1]):
                 if 0 < int(self.courses[label].lvl) < int(self.courses[label].max) and self.check_reqs(label):
                     self.courses[label].lvl = self.courses[label].lvl + 1
 
@@ -77,7 +77,7 @@ class Gameplay(object):
             if deplvl == lvl:
                 neededcourse = req[1:5]
                 neededlevel = int(req[-1])
-                reqs_met.append(neededlevel == self.courses[neededcourse].lvl)
+                reqs_met.append(neededlevel <= self.courses[neededcourse].lvl)
         return all(reqs_met) or not len(reqs_met)
 
     def evaluate_portfolio(self):
@@ -90,10 +90,10 @@ class Gameplay(object):
         >>> test_game.evaluate_portfolio()
         "Your portfolio could use a little more work. Try again?"
         """
-        maxedlvls = [self.courses[label].lvl == self.courses[label].max for label in list(self.courses)]
-
+        maxedlvls = [int(self.courses[label].lvl) == int(self.courses[label].max) for label in list(self.courses)]
         if all(maxedlvls):
-            return "Congratulations! You created the coolest portfolio!"
+            print("Congratulations! You created the coolest portfolio!")
+            return True
         else:
             return "Your portfolio could use a little more work. Try again?"
 

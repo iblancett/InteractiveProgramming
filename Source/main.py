@@ -7,7 +7,7 @@ import courses
 from gameplay import Gameplay
 import sys
 import pygame
-#import ending
+from ending import ending
 from environment import *
 
 # INITIALIZE GAME
@@ -34,8 +34,8 @@ while not done:
     pygame.event.pump()
 
 # EVALUATE ENDING AND SEND TO VICTORY SCREEN
-#victory = control.evaluate_portfolio()
-#if victory == 1:
-#    ending.determine(victory, ["%s: %s" % (control.courses[course].name, 'MAX') for course in control.courses])
-#else:
-#    ending.determine(victory, ["%s: %s" % (control.courses[course].name, control.courses[course].lvl) for course in control.courses])
+victory = control.evaluate_portfolio()
+if victory == 1:
+    ending(victory, ["%s: %s" % (control.courses[course].name, 'MAX') for course in control.courses])
+else:
+    ending(victory, ["%s: %s" % (control.courses[course].name, control.courses[course].lvl) for course in control.courses])

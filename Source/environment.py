@@ -1,6 +1,23 @@
+# Author: Siena Okuno
+# Project: Interactive Programming
+# Date: 10.30.2017
+# Description: Creates GUI for player and posts events when a button is clicked
+
 import pygame
 import os
 import sys
+
+def initialize():
+    """ Initializes graphic screen.
+    """
+    pygame.init()
+    screen = pygame.display.set_mode((1000, 700))
+    pygame.font.init()
+    font = pygame.font.Font(None,30)
+    pygame.mouse.set_pos([500,350])
+    pygame.mouse.set_visible(True)
+    text = setUpE(screen, font)
+    return [screen, text]
 
 def setUpE(screen, font):
     '''This code is to load the basic backscreen for the program.
@@ -46,40 +63,35 @@ def setUpE(screen, font):
     pygame.display.flip()
     return text
 
-def mouseClicks(order, BUTTON):
+def mouseClicks(order, BUTTON, screen):
     '''This function looks for the click of a mouse and queues an event based on where the mouse is'''
     (x,y) = pygame.mouse.get_pos()
+    clicked_path = 'Source/Course_Icons/%s_clicked.png'
     if y >= 550 and y<= 655 and any(pygame.mouse.get_pressed()):
         if x >= 51 and x<= 159 and 'bees' not in order:
             button1 = pygame.event.Event(BUTTON, pressed='bees')
             pygame.event.post(button1)
-            pygame.image.load('Source/Course_Icons/bees_clicked.png')
-            pygame.display.flip()
+            updateImg(screen, clicked_path % 'bees', (51,550))
         elif x >= 209 and x <= 317 and 'elec' not in order:
             button2 = pygame.event.Event(BUTTON, pressed='elec')
             pygame.event.post(button2)
-            pygame.image.load('Source/Course_Icons/elec_clicked.png')
-            pygame.display.flip()
+            updateImg(screen, clicked_path % 'elec', (209,550))
         elif x >= 367 and x <= 475 and 'focs' not in order:
             button3 = pygame.event.Event(BUTTON, pressed='focs')
             pygame.event.post(button3)
-            pygame.image.load('Source/Course_Icons/focs_clicked.png')
-            pygame.display.flip()
+            updateImg(screen, clicked_path % 'focs', (367,550))
         elif x >= 525 and x <= 633 and 'robo' not in order:
             button4 = pygame.event.Event(BUTTON, pressed='robo')
             pygame.event.post(button4)
-            pygame.image.load('Source/Course_Icons/robo_clicked.png')
-            pygame.display.flip()
+            updateImg(screen, clicked_path % 'robo', (525,550))
         elif x >= 683 and x <= 791 and 'mats' not in order:
             button5 = pygame.event.Event(BUTTON, pressed='mats')
             pygame.event.post(button5)
-            pygame.image.load('Source/Course_Icons/mats_clicked.png')
-            pygame.display.flip()
+            updateImg(screen, clicked_path % 'mats', (683,550))
         elif x >= 841 and x <= 950 and 'mech' not in order:
             button6 = pygame.event.Event(BUTTON, pressed='mech')
             pygame.event.post(button6)
-            pygame.image.load('Source/Course_Icons/mech_clicked.png')
-            pygame.display.flip()
+            updateImg(screen, clicked_path % 'mech', (841,550))
 
 def mouseOver(text, screen):
     '''This function looks for the position of the mouse and will display text above the buttons if the mouse is hovering over the buttons'''
@@ -109,3 +121,8 @@ def mouseOver(text, screen):
             pygame.draw.rect(screen, (0,0,0), (0,480,1000,50))
     else:
         pygame.draw.rect(screen, (0,0,0), (0,480,1000,50))
+
+def updateImg(screen, img, location):
+    loaded = pygame.transform.scale(pygame.image.load(img), (108, 100))
+    screen.blit(loaded, location)
+    pygame.display.flip()

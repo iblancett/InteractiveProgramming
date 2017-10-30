@@ -1,3 +1,11 @@
+# Author: Isa Blancett
+# Project: Interactive Programming
+# Date: 10.30.2017
+# Description: Class for reading in a csv file containing course information and
+# creating and instance for each course
+# Acknowledgements: Script structure is modeled after Transcriptase's Game
+# repository on Git
+
 import csv
 
 class Courses(object):
@@ -52,7 +60,7 @@ def populate():
     """
     all_courses = {}
 
-    f = open('Source\courses.csv', 'r')
+    f = open('Source/courses.csv', 'r')
     reader = csv.DictReader(f)
 
     for row in reader:

@@ -25,7 +25,7 @@ while not done:
             for course in list(control.courses):
                 print(course, control.courses[course].lvl)
         mouseOver(text, screen)
-        mouseClicks(control.order, BUTTON)
+        mouseClicks(control.order, BUTTON, screen)
     pygame.display.flip()
     pygame.event.pump()
 

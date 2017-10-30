@@ -52,7 +52,7 @@ def populate():
     """
     all_courses = {}
 
-    f = open('Source\courses.csv', 'r')
+    f = open('Source/courses.csv', 'r')
     reader = csv.DictReader(f)
 
     for row in reader:
